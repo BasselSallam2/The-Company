@@ -7,9 +7,9 @@ import jwt from "jsonwebtoken";
 const tokenTTL = "1d";
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
-  const { phone, password } = req.body;
+  const { phoneNumber, password } = req.body;
   const user = (await userModel
-    .findOne({ phone: phone })
+    .findOne({ phoneNumber: phoneNumber })
     .cache()) as any;
   if (!user) {
     return res.status(401).json({ status: LoginStatus.INVALID_CREDENTIALS, id: null });

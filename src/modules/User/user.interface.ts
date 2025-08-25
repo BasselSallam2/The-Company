@@ -4,7 +4,7 @@ import { Document } from "mongoose";
 interface User extends Document {
   _id: string;
   name: string;
-  phone: string;
+  phoneNumber: string;
   password: string;
   jobTitle: string;
   permessions: string[];

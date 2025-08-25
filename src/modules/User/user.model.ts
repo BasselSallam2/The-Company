@@ -7,7 +7,7 @@ const userSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
     password: { type: String, required: true },
-    phone: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
     jobTitle: { type: String, required: true },
     permessions: { type: [String], required: true },
     passwordResetCode: { type: String , default: null},

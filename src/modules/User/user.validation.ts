@@ -5,7 +5,7 @@ import validateResult from "@/middlewares/ValidationRequest.js";
 
 export const createUserValidator = [
   UserVlidator.text(body("name"), 3),
-  UserVlidator.Number(body("phone"), 10),
+  UserVlidator.Number(body("phoneNumber"), 10),
   UserVlidator.text(body("password"), 6),
   UserVlidator.text(body("confirmPassword"), 6),
   UserVlidator.text(body("jobTitle"), 2),
@@ -16,7 +16,7 @@ export const createUserValidator = [
 
 export const updateUserValidator = [
   UserVlidator.text(body("name"), 3).optional(),
-  UserVlidator.Number(body("phone"), 10).optional(),
+  UserVlidator.Number(body("phoneNumber"), 10).optional(),
   UserVlidator.text(body("password"), 6).optional(),
   UserVlidator.text(body("confirmPassword"), 6).optional(),
   UserVlidator.text(body("jobTitle"), 2).optional(),
@@ -26,7 +26,7 @@ export const updateUserValidator = [
 ];
 
 export const loginValidator = [
-  UserVlidator.Number(body("phone"), 10),
+  UserVlidator.Number(body("phoneNumber"), 10),
   UserVlidator.text(body("password"), 6),
   validateResult
 ];

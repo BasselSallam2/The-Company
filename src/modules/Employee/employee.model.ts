@@ -6,7 +6,7 @@ import IEmployee from "@/modules/Employee/employee.interface.js";
 const employeeSchema = new Schema<IEmployee>(
   {
     name: { type: String, required: true },
-    phone: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
     jobTitle: { type: String, required: true },
     deleted: { type: Boolean , default: false},
   },
