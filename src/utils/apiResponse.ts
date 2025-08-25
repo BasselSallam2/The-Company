@@ -37,7 +37,7 @@ class ApiResponse<T> {
       nextPage: null,
       prevPage: null,
       lastPage: 1,
-      status: "Empty Response",
+      status: "fail",
       success: false,
     });
   }
