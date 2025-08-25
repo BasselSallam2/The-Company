@@ -1,0 +1,19 @@
+{
+  "deleted_successfully": "تم الحذف بنجاح",
+  "document_not_found": "المستند غير موجود",
+  "updated_successfully": "تم التحديث بنجاح",
+  "no_matched_documents": "لا توجد مستندات مطابقة",
+  "Created_Successfully": "تم الإنشاء بنجاح" ,
+   "errors": {
+    "userNotFound": "المستخدم غير موجود",
+    "invalidData": "بيانات غير صحيحة",
+    "serverError": "حدث خطأ في السيرفر",
+     "notFound": "لا يمكن العثور على {{url}} على هذا السيرفر",
+     "fail": "فشل",
+     "error": "خطأ",
+     "taken": "تم استعمالها مسبقا",
+     "wrong": "حدث خطأ غير متوقع",
+     "ID_NOT_FOUND": "لا يوجد {{modelName}} برقم ({{id}})",
+     "forbidden": "هذا المستخدم ليس لديه صلاحية للقيام بهذا الفعل"
+  }
+} 

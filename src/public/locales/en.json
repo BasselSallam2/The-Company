@@ -1,0 +1,19 @@
+{
+  "deleted_successfully": "Deleted Successfully",
+  "document_not_found": "Document is not found",
+  "updated_successfully": "Updated Successfully",
+  "no_matched_documents": "No matched documents",
+  "Created_Successfully": "Created Successfully" ,
+  "errors": {
+    "userNotFound": "User not found",
+    "invalidData": "Invalid data",
+    "serverError": "Server error",
+    "notFound": "Can't find {{url}} on this server",
+    "fail": "fail",
+    "error": "error",
+    "taken": "is already taken",
+    "wrong": "Something went wrong",
+    "ID_NOT_FOUND": "{{modelName}} with id {{id}} not found",
+    "forbidden": "This User Is Not Authenticated To Perform This Action"
+  }
+}

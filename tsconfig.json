@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "types": ["node", "express"],
+   "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "target": "ES2020",
+    "module": "nodenext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "moduleResolution": "nodenext",
+
+    "baseUrl": "./src",
+    "paths": {
+       "@/*": ["*"],
+      "@config/*": ["config/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@modules/*": ["modules/*"],
+      "@shared/*": ["shared/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+      "@logs/*": ["LOGS/*"],
+      "@cache/*": ["cache/*"],
+      "@services/*": ["services/*"],
+      "@public/*": ["public/*"],
+    },
+
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
