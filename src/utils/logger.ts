@@ -63,4 +63,4 @@ const logger = morgan((tokens, req, res) => {
   }
 });
 
-export default logger;
+export  {logger};

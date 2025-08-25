@@ -1,8 +1,7 @@
 import { Document } from "mongoose";
 
 
-interface Employee extends Document {
-  id: string;
+interface IEmployee extends Document {
   name: string;
   phoneNumber: string;
   jobTitle: string;
@@ -11,4 +10,4 @@ interface Employee extends Document {
 
 
 
-export default Employee;
+export  {IEmployee};

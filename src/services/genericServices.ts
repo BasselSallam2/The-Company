@@ -1,10 +1,10 @@
 import { Model, PopulateOptions } from "mongoose";
 import ApiFeature from "@/utils/apiFeatures.js";
-import cacheInit from "@cache/init.js";
+import {cache} from "@cache/init.js";
 import { clearByPattern } from "@/cache/cacheHelper.js";
 import { Document } from "mongoose";
 
-export class GenericServices<T> {
+ class GenericServices<T> {
   model: Model<T>;
   modelName: string;
   constructor(model: Model<T>) {
@@ -108,4 +108,4 @@ public async getOne(
   }
 }
 
-export default GenericServices;
+export  {GenericServices};

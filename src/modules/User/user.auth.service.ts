@@ -1,4 +1,4 @@
-import userModel from "./user.model.js";
+import {UserModel} from "./user.model.js";
 import { Request, Response, NextFunction } from "express";
 import { LoginStatus } from "@utils/interfaces.js";
 import bcrypt from "bcryptjs";
@@ -6,9 +6,9 @@ import jwt from "jsonwebtoken";
 
 const tokenTTL = "1d";
 
-export const login = async (req: Request, res: Response, next: NextFunction) => {
+ const login = async (req: Request, res: Response, next: NextFunction) => {
   const { phoneNumber, password } = req.body;
-  const user = (await userModel
+  const user = (await UserModel
     .findOne({ phoneNumber: phoneNumber })
     .cache()) as any;
   if (!user) {
@@ -31,3 +31,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
   return res.status(200).json({ status: LoginStatus.LOGIN_SUCCESSFULLY, token });
 };
+
+
+export { login };

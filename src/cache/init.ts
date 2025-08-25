@@ -2,7 +2,7 @@ import Cache from "ts-cache-mongoose";
 import { redisConnectionOptions } from "@/cache/cacheClient.js";
 import mongoose from "mongoose";
 
-const cache = Cache.init(mongoose, {
+  const cache = Cache.init(mongoose, {
       defaultTTL: "60 seconds",
       engine: "redis",
       engineOptions: redisConnectionOptions() as any,
@@ -10,5 +10,4 @@ const cache = Cache.init(mongoose, {
     });
 
 
-
-export default cache ;
+export {cache};

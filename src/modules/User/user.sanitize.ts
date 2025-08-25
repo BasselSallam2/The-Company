@@ -1,4 +1,4 @@
-import IUser from "@modules/User/user.interface.js";
+import {IUser} from "@modules/User/user.interface.js";
 
 const getAllSanitize: (keyof IUser)[] = [
   "password",
@@ -7,4 +7,4 @@ const getAllSanitize: (keyof IUser)[] = [
   "passwordResetVerified",
 ];
 
-export default getAllSanitize;
+export  {getAllSanitize};

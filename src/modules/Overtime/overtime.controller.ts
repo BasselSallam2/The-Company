@@ -1,11 +1,11 @@
-import GenericController from "@shared/genericController.js";
+import {GenericController} from "@shared/genericController.js";
 import overtimeService from "@modules/Overtime/overtime.services.js";
 import asyncHandler from "express-async-handler";
 import { logActivity , logActions} from "../activity/activity.service.js";
 import { Request, Response , NextFunction } from "express";
 import apiResponse from "@/utils/apiResponse.js";
 import { OvertimeResponces } from "@modules/Overtime/overtime.interface.js";
-import ApiError from "@/utils/apiError.js";
+import {ApiError} from "@/utils/apiError.js";
 
 class OvertimeController extends GenericController<any> {
 

@@ -8,7 +8,7 @@ type Error =  {
   location: string;
 };
 
-function validateResult(
+ function validateResult(
   req: Request,
   res: Response,
   next: NextFunction
@@ -25,4 +25,5 @@ function validateResult(
   next();
 }
 
-export default validateResult;
+
+export { validateResult };

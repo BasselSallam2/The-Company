@@ -33,6 +33,15 @@ class UserVlidator extends CommonUserVlidator {
     return chain;
   }
 
+  static role(field: any): ValidationChain {
+    let chain = field
+      .notEmpty()
+      .withMessage("role is required")
+      .isIn(["Admin", "Manager", "HR"])
+      .withMessage("role must be Admin, Manager or HR");
+    return chain;
+  }
+
 }
 
-export default UserVlidator;
+export  {UserVlidator};

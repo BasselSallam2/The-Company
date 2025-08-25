@@ -1,6 +1,6 @@
 // src/models/User.ts
 import { Schema, model, Document } from "mongoose";
-import IEmployee from "@/modules/Employee/employee.interface.js";
+import {IEmployee} from "@/modules/Employee/employee.interface.js";
 
 
 const employeeSchema = new Schema<IEmployee>(
@@ -22,4 +22,4 @@ const EmployeeModel = model<IEmployee>("Employee", employeeSchema);
 
 
 
-export default EmployeeModel;
+export  {EmployeeModel};

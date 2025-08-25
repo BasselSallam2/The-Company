@@ -2,7 +2,10 @@ import { Router } from "express";
 import {
   createUserValidator,
   loginValidator,
-  updateUserValidator
+  updateUserValidator,
+  updateUserProfileValidator,
+  updateUserPasswordValidator,
+  dateUserPermissionsValidator,
 } from "@/modules/User/user.validation.js";
 import UserController from "@modules/User/user.controller.js";
 import { login } from "./user.auth.service.js";
@@ -13,13 +16,47 @@ const router = Router();
 router.route("/auth/login").post(loginValidator, login);
 router
   .route("/")
-  .post(protect, allowedWith(Permessions.USERCREATE), createUserValidator, UserController.createOne)
+  .post(
+    protect,
+    allowedWith(Permessions.USERCREATE),
+    createUserValidator,
+    UserController.createOne
+  )
   .get(protect, allowedWith(Permessions.USERREAD), UserController.getAll);
 
 router
   .route("/:id")
   .get(protect, allowedWith(Permessions.USERREAD), UserController.getOne)
-  .put (updateUserValidator,  UserController.updateById)
-  .delete(protect, allowedWith(Permessions.USERDELETE), UserController.deleteById);
+  .put(updateUserValidator, UserController.updateById)
+  .delete(
+    protect,
+    allowedWith(Permessions.USERDELETE),
+    UserController.deleteById
+  );
+
+router
+  .route("/profile/:id")
+  .put(
+    protect,
+    allowedWith(Permessions.USERUPDATE),
+    updateUserProfileValidator,
+    UserController.updateProfile
+  );
+router
+  .route("/password/:id")
+  .put(
+    protect,
+    allowedWith(Permessions.USERUPDATE),
+    updateUserPasswordValidator,
+    UserController.updatePassword
+  );
+router
+  .route("/permissions/:id")
+  .put(
+    protect,
+    allowedWith(Permessions.USERUPDATE),
+    dateUserPermissionsValidator,
+    UserController.updatePermessions
+  );
 
 export default router;

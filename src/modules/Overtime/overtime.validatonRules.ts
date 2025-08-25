@@ -14,4 +14,4 @@ class OvertimeVlidator extends CommonValidator {
 
 
   }
-export default OvertimeVlidator;
+export  {OvertimeVlidator};

@@ -1,14 +1,15 @@
 // src/models/User.ts
 import { Schema, model, Document } from "mongoose";
-import IUser from "@/modules/User/user.interface.js";
+import {IUser} from "@/modules/User/user.interface.js";
 import { hashPasswordPlugin } from "@/shared/commonPlugins.js";
 
 const userSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
     password: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
+    phoneNumber: { type: String, required: true , unique: true},
     jobTitle: { type: String, required: true },
+    role: { type: String, required: true, enum: ["Admin", "Manager", "HR"] },
     permessions: { type: [String], required: true },
     passwordResetCode: { type: String , default: null},
     passwordResetExpires: { type: Date , default: null},
@@ -29,4 +30,4 @@ const UserModel = model<IUser>("User", userSchema);
 
 
 
-export default UserModel;
+export  {UserModel};

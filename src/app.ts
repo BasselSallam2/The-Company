@@ -1,7 +1,7 @@
 import express from "express";
 import  Appuse from "@utils/appUse.js";
 import { globalErrorHandler } from "@utils/apiGolbalErrror.js";
-import ApiError from "@utils/apiError.js";
+import {ApiError} from "@utils/apiError.js";
 
 
 const app = express();

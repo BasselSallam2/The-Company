@@ -1,6 +1,6 @@
 import { TFunction } from "i18next";
 
-export class ApiError extends Error {
+ class ApiError extends Error {
     statusCode: number;
     status: string;
     isOperational: boolean;
@@ -17,4 +17,4 @@ export class ApiError extends Error {
     }
 }
 
-export default ApiError ;
+export  {ApiError} ;

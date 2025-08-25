@@ -1,6 +1,6 @@
 // src/models/User.ts
 import { Schema, model, Document } from "mongoose";
-import IOvertime from "@/modules/Overtime/overtime.interface.js";
+import {IOvertime} from "@/modules/Overtime/overtime.interface.js";
 
 
 const overtimeSchema = new Schema<IOvertime>(
@@ -23,4 +23,4 @@ const OvertimeModel = model<IOvertime>("Overtime", overtimeSchema);
 
 
 
-export default OvertimeModel;
+export  {OvertimeModel};

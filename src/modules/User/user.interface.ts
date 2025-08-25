@@ -1,12 +1,12 @@
 import { Document } from "mongoose";
 
 
-interface User extends Document {
-  _id: string;
+interface IUser extends Document {
   name: string;
   phoneNumber: string;
   password: string;
   jobTitle: string;
+  role: "Admin" | "Manager" | "HR";
   permessions: string[];
   passwordResetCode: string;
   passwordResetExpires: Date; 
@@ -17,4 +17,4 @@ interface User extends Document {
 
 
 
-export default User;
+export  {IUser};

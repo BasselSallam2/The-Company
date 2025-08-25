@@ -1,4 +1,4 @@
-import GenericController from "@shared/genericController.js";
+import {GenericController} from "@shared/genericController.js";
 import employeeService from "@modules/Employee/employee.services.js";
 
 

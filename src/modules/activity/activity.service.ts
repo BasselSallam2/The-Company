@@ -1,5 +1,5 @@
 
-import ActivityModel from "./activity.model.js";
+import {ActivityModel} from "./activity.model.js";
 
 interface LogParams { 
   action: "CREATE" | "UPDATE" | "DELETE";
@@ -10,13 +10,13 @@ interface LogParams {
   data?: Record<string, any>;
 }
 
-export enum logActions {
+ enum logActions {
     CREATE = "CREATE",
     UPDATE = "UPDATE",
     DELETE = "DELETE"
 }
 
-export const logActivity = async ({action, targetRef, target, actor, actorRef}: LogParams) => {
+ const logActivity = async ({action, targetRef, target, actor, actorRef}: LogParams) => {
 
     await ActivityModel.create({
         action,
@@ -26,6 +26,8 @@ export const logActivity = async ({action, targetRef, target, actor, actorRef}: 
         actor
     })
 }
+
+export {logActions , logActivity};
 
 
     

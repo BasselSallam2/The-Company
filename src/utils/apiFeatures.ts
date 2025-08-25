@@ -70,7 +70,7 @@ class ApiFeature {
   select() {
     if (this.queryStr.fields) {
       const fields = this.queryStr.fields.split(",").join(" ");
-      this.MongooseQuery = this.MongooseQuery.select(`${fields} -_id`);
+      this.MongooseQuery = this.MongooseQuery.select(`${fields} `);
     } else {
       const excludeStr = this.excludedFields.map(f => `-${f}`).join(" ");
       this.MongooseQuery = this.MongooseQuery.select(`-__v ${excludeStr}`);

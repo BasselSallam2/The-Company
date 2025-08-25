@@ -4,7 +4,7 @@ import { GenericServices } from "@services/genericServices.js";
 import apiResponse from "@/utils/apiResponse.js";
 import { PopulateOption, PopulateOptions } from "mongoose";
 import { logActivity, logActions } from "@modules/activity/activity.service.js";
-export class GenericController<T> {
+ class GenericController<T> {
   service: GenericServices<T>;
   public sanitizeOption?: string[];
   constructor(service: GenericServices<T>) {
@@ -213,4 +213,4 @@ export class GenericController<T> {
   });
 }
 
-export default GenericController;
+export  {GenericController};

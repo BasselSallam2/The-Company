@@ -1,6 +1,6 @@
 // middleware/errorHandler.ts
 import { Request, Response, NextFunction } from "express";
-import ApiError from "@/utils/apiError.js";
+import {ApiError} from "@/utils/apiError.js";
 import { MulterError } from "multer";
 
 export const globalErrorHandler = (

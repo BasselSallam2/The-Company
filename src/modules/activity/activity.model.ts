@@ -1,6 +1,6 @@
 // src/models/User.ts
 import { Schema, model, Document } from "mongoose";
-import IActivity from "@modules/activity/activity.interface.js";
+import {IActivity} from "@modules/activity/activity.interface.js";
 
 
 const activitySchema = new Schema<IActivity>(
@@ -25,4 +25,4 @@ const activitySchema = new Schema<IActivity>(
 const ActivityModel = model<IActivity>("Activity", activitySchema);
 
 
-export default ActivityModel;
+export  {ActivityModel};

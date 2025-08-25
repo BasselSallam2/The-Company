@@ -1,12 +1,12 @@
-import GenericServices from "@/services/genericServices.js";
+import {GenericServices} from "@/services/genericServices.js";
 import { Document, Model } from "mongoose";
-import Overtime from "@modules/Overtime/overtime.interface.js";
-import OvertimeModel from "@modules/Overtime/overtime.model.js";
+import {IOvertime} from "@modules/Overtime/overtime.interface.js";
+import {OvertimeModel} from "@modules/Overtime/overtime.model.js";
 import { clearByPattern } from "@cache/cacheHelper.js";
 import { OvertimeResponces } from "@modules/Overtime/overtime.interface.js";
-import EmployeeModel from "@modules/Employee/employee.model.js";
-class OvertimeService extends GenericServices<Overtime> {
-  constructor(model: Model<Overtime>) {
+import {EmployeeModel} from "@modules/Employee/employee.model.js";
+class OvertimeService extends GenericServices<IOvertime> {
+  constructor(model: Model<IOvertime>) {
     super(model);
   }
 

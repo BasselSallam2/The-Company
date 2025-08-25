@@ -1,9 +1,9 @@
-import GenericServices from "@/services/genericServices.js";
+import {GenericServices} from "@/services/genericServices.js";
 import { Model } from "mongoose";
-import Employee from "@modules/Employee/employee.interface.js";
-import EmployeeModel from "@modules/Employee/employee.model.js";
-class EmployeeService extends GenericServices<Employee> {
-  constructor(model: Model<Employee>) {
+import {IEmployee} from "@modules/Employee/employee.interface.js";
+import {EmployeeModel} from "@modules/Employee/employee.model.js";
+class EmployeeService extends GenericServices<IEmployee> {
+  constructor(model: Model<IEmployee>) {
     super(model);
   }
 }

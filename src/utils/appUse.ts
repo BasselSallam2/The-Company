@@ -5,13 +5,13 @@ import express from "express";
 import path from "path";
 
 import appRoutes from "@utils/routes.js";
-import logger from "@utils/logger.js";
+import {logger} from "@utils/logger.js";
 import rateLimit from "express-rate-limit";
 import slowDown from "express-slow-down";
 import compression from "compression";
 import mongooseSanitize from "express-mongo-sanitize";
 
-import i18next from "@config/i18n.js";
+import {i18next} from "@config/i18n.js";
 import * as middleware from "i18next-http-middleware";
 
 
@@ -29,7 +29,6 @@ const speedLimiter = slowDown({
 });
 
 function Appuse(app: Express) {
-app.use("/locales", express.static(path.join(process.cwd(), "public/locales")));
   app.use(middleware.handle(i18next));
 
   app.use(express.json({ limit: "10Kb" }));

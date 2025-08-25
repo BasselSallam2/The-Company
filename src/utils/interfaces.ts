@@ -22,6 +22,7 @@ export const Permessions = {
     OVERTIMECREATE: "overtime:create",
     OVERTIMEREAD: "overtime:read",
     OVERTIMEUPDATE: "overtime:update",
-    OVERTIMEDELETE: "overtime:delete"
+    OVERTIMEDELETE: "overtime:delete",
+    CACHECLEAR: "cache:clear"
 
 } as const;

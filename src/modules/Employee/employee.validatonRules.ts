@@ -10,4 +10,4 @@ class EmployeeVlidator extends CommonUserVlidator {
  
 }
 
-export default EmployeeVlidator;
+export  {EmployeeVlidator};

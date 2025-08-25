@@ -2,12 +2,12 @@ import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import { ApiError } from "@utils/apiError.js";
 import mongoose from "mongoose";
-import GenericServices from "@services/genericServices.js";
+import {GenericServices} from "@services/genericServices.js";
 
 
 
 
-export const protect = async (
+ const protect = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -34,7 +34,7 @@ export const protect = async (
   }
 };
 
-export const allowedWith =  (...Allowedpermissions: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+ const allowedWith =  (...Allowedpermissions: string[]) => async (req: Request, res: Response, next: NextFunction) => {
   const {_id , modelName} = req.user as {_id: string , modelName: string};
   const model = new GenericServices(mongoose.model(modelName));
   const result = await model.getOne(_id, { selectOption: ["permessions"] });
@@ -49,3 +49,5 @@ export const allowedWith =  (...Allowedpermissions: string[]) => async (req: Req
   
   next();
 };
+
+export {protect, allowedWith};

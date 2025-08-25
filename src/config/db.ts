@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import cache from "@/cache/init.js";
+import {cache} from "@/cache/init.js";
 
-const connectDB = async (mongoURI: string): Promise<void> => {
+export const connectDB = async (mongoURI: string): Promise<void> => {
   try {
     await mongoose.connect(mongoURI, { maxPoolSize: 30, minPoolSize: 5 });
     cache
@@ -12,4 +12,4 @@ const connectDB = async (mongoURI: string): Promise<void> => {
   }
 };
 
-export default connectDB;
+

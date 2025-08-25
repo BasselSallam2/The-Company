@@ -1,7 +1,7 @@
 import { Document , Schema } from "mongoose";
 
 
-interface Activity extends Document {
+ interface IActivity extends Document {
   id: string;
   actorRef: string;
   actor: Schema.Types.ObjectId;
@@ -11,6 +11,7 @@ interface Activity extends Document {
   data?: Record<string, any>;
 }
 
+export { IActivity };
 
 
-export default Activity;
+

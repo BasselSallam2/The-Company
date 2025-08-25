@@ -14,6 +14,9 @@
     "taken": "is already taken",
     "wrong": "Something went wrong",
     "ID_NOT_FOUND": "{{modelName}} with id {{id}} not found",
-    "forbidden": "This User Is Not Authenticated To Perform This Action"
+    "forbidden": "This User Is Not Authenticated To Perform This Action",
+    "login": {
+      "UNAUTHORIZED": "you are unauthorized please login first"
+    }
   }
 }
