@@ -9,7 +9,7 @@ import { NextFunction } from "express-serve-static-core";
 import { ApiError } from "@/utils/apiError.js";
 
 
-class UserController extends GenericController<typeof userService> {
+export class UserController extends GenericController<typeof userService> {
 
   constructor() {
     super(userService); 

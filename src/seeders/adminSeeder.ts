@@ -4,8 +4,8 @@ dotenv.config();
 import { Permessions } from "@/utils/interfaces.js";
 
 const seedAdmin = async () => {
-  const usersCount = await UserModel.countDocuments();
-  if (usersCount === 0) {
+  const Admin = await UserModel.findOne({ role: "Admin" }).exec();
+  if (!Admin) {
     const allPermessions = Object.values(Permessions);
     const admin = await UserModel.create({
       name: process.env.ADMIN_NAME,

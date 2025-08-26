@@ -68,10 +68,10 @@ const logger = morgan((tokens, req, res) => {
 const clearLOGS = (req: Request, res: Response) => {
   const {permessions} = req.user as {permessions: string[]};
   if (permessions.includes(Permessions.LOGCLEAR)) {
-    fs.unlinkSync(logFile);
-    return res.status(200).json({ message: "Logs cleared successfully" });
+    fs.writeFileSync(logFile, "");
+    return res.status(200).json({ success: true, status: "success", message: "Logs cleared successfully" });
   }
-  return res.status(403).json({ message: "You don't have permission to clear logs" });
+  return res.status(403).json({ success: false, status: "fail",message: "You don't have permission to clear logs" });
 };
 
 export  {logger , clearLOGS};
