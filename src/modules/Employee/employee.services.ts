@@ -70,6 +70,7 @@ class EmployeeService extends GenericServices<IEmployee> {
       phoneNumber: employee.phoneNumber,
       jobTitle: employee.jobTitle,
       totalDuration: 0,
+      timeunit: "ms",
       period
     } as EmployeeAnalysis;
   }
@@ -80,6 +81,7 @@ class EmployeeService extends GenericServices<IEmployee> {
     phoneNumber: result[0].phoneNumber,
     jobTitle: result[0].jobTitle,
     totalDuration: result[0].totalDuration,
+    timeunit: "ms",
     period
   };
 

@@ -71,6 +71,7 @@ class RequestService extends GenericServices<IRequest> {
           period: `${
             new Date(doc.end).getTime() - new Date(doc.start).getTime()
           }`,
+          timeunit: "ms",
         };
       });
     }

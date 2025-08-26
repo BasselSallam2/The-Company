@@ -14,6 +14,7 @@ interface EmployeeAnalysis {
   phoneNumber: string;
   jobTitle: string;
   totalDuration: number; 
+  timeunit: string;
   period: string; 
 }
 

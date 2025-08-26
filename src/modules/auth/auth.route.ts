@@ -8,7 +8,7 @@ import userController from "@modules/User/user.controller.js";
 const router = Router();
 
 router.route("/login").post(loginValidator, login);
-router.route("/me").post(protect, userController.getMe); 
+router.route("/me").get(protect, userController.getMe); 
 
 
 
