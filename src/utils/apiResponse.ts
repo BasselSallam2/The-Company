@@ -34,7 +34,7 @@ class ApiResponse<T> {
   }
 
   notFound(res: Response, t: TFunction) {
-    return new ApiError(404, "errors.document_not_found", t);
+    throw new ApiError(404, "errors.document_not_found", t);
   }
 
   empty(res: Response) {
@@ -83,6 +83,16 @@ class ApiResponse<T> {
     data?: any
   ) {
     return res.status(status).json({success: true, status: "success", message: t(messageKey), ...data });
+  }
+
+  fail(
+    res: Response,
+    t: TFunction,
+    status: number,
+    messageKey: string,
+    data?: any
+  ) {
+    return res.status(status).json({success: false, status: "fail", message: t(messageKey), ...data });
   }
 }
 

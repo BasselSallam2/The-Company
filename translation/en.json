@@ -4,6 +4,9 @@
   "updated_successfully": "Updated Successfully",
   "no_matched_documents": "No matched documents",
   "Created_Successfully": "Created Successfully" ,
+  "cache_cleared": "Cache cleared successfully",
+  "Logs_cleared": "Logs cleared successfully",
+  "LOGS_FAIL": "Failed to clear logs",
   "errors": {
     "DUBLICATED_DOCUMENT": "Duplicated document",
     "DUBLICATED__MESSAGE": "{{field}} {{value}} is already taken",

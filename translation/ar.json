@@ -4,6 +4,9 @@
   "updated_successfully": "تم التحديث بنجاح",
   "no_matched_documents": "لا توجد مستندات مطابقة",
   "Created_Successfully": "تم الإنشاء بنجاح",
+  "cache_cleared": "تم حذف الكاش بنجاح",
+  "Logs_cleared": "تم حذف السجلات بنجاح",
+  "LOGS_FAIL": "لا يمكن حذف السجلات",
   "errors": {
     "DUBLICATED_DOCUMENT": "المستند مكرر",
     "DUBLICATED__MESSAGE":"{{field}} {{value}} تم استعمالها مسبقا",

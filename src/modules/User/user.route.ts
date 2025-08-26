@@ -29,7 +29,7 @@ router
   .delete(
     protect,
     allowedWith(Permessions.USERDELETE),
-    UserController.deleteById
+    UserController.softDeleteById
   );
 
 router

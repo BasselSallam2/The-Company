@@ -4,10 +4,11 @@ import { GenericServices } from "@services/genericServices.js";
 import apiResponse from "@/utils/apiResponse.js";
 import { PopulateOption, PopulateOptions } from "mongoose";
 import { logActivity, logActions } from "@modules/activity/activity.service.js";
-  class GenericController<TService extends GenericServices<any>> {
+import { Types } from "mongoose";
+class GenericController<TService extends GenericServices<any>> {
   protected service: TService;
   public sanitizeOption?: string[];
-   constructor(service: TService) {
+  constructor(service: TService) {
     this.service = service;
   }
 
@@ -35,24 +36,26 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
     const t = req.t;
     const { id } = req.params;
     const { query } = req;
+
+    if (!id || !Types.ObjectId.isValid(id)) {
+      apiResponse.notFound(res, t);
+      return
+    }
+
     let finalPopulate: PopulateOptions | PopulateOptions[] = [];
     if (query.populate) {
       finalPopulate = JSON.parse(query.populate as string);
     }
     let cache = false;
-    if(query.cache) {
+    if (query.cache) {
       cache = JSON.parse(query.cache as string);
     }
 
-    const document = await this.service.getOne(
-      id as string,
-      {
-        populateOption: finalPopulate,
-        sanitizeOption: this.sanitizeOption,
-        cache: cache
-      }
-
-    );
+    const document = await this.service.getOne(id as string, {
+      populateOption: finalPopulate,
+      sanitizeOption: this.sanitizeOption,
+      cache: cache,
+    });
     if (!document) {
       apiResponse.notFound(res, t);
       return;
@@ -64,15 +67,24 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
   public deleteById = asyncHandler(async (req: Request, res: Response) => {
     const t = req.t;
     const { id } = req.params;
+
+    if (!id || !Types.ObjectId.isValid(id)) {
+      apiResponse.notFound(res, t);
+      return
+    }
+
+
     if (req.user) {
-     const { _id } = req.user as { _id: string };
-      logActivity({
-        action: logActions.DELETE,
-        targetRef: this.service.modelName,
-        target: id as string,
-        actorRef: "User",
-        actor: _id,
-      });
+      const { _id } = req.user as { _id: string };
+      if (id && _id) {
+        logActivity({
+          action: logActions.DELETE,
+          targetRef: this.service.modelName,
+          target: id as string,
+          actorRef: "User",
+          actor: _id,
+        });
+      }
     }
 
     const document = await this.service.deleteById(id as string);
@@ -88,7 +100,12 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
     const t = req.t;
     const { id } = req.params;
 
-    if (req.user) {
+    if (!id || !Types.ObjectId.isValid(id)) {
+      apiResponse.notFound(res, t);
+      return
+    }
+
+    if (req.user && id && id.length > 0) {
       const { _id } = req.user as { _id: string };
       logActivity({
         action: logActions.DELETE,
@@ -100,7 +117,9 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
     }
 
     const document = await this.service.softDeleteById(id as string);
+
     if (!document) {
+      console.log("efefef");
       apiResponse.notFound(res, t);
       return;
     }
@@ -111,14 +130,14 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
   public deleteMany = asyncHandler(async (req: Request, res: Response) => {
     const t = req.t;
     const { body } = req;
-      if (req.user) {
+    if (req.user) {
       const { _id } = req.user as { _id: string };
       logActivity({
         action: logActions.DELETE,
         targetRef: this.service.modelName,
         actorRef: "User",
         actor: _id,
-        data: body
+        data: body,
       });
     }
     const document = await this.service.deleteMany(body);
@@ -134,6 +153,13 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
     const t = req.t;
     const { id } = req.params;
     const { body } = req;
+
+    if (!id || !Types.ObjectId.isValid(id)) {
+      apiResponse.notFound(res, t);
+      return
+    }
+
+    
     if (req.user) {
       const { _id } = req.user as { _id: string };
       logActivity({
@@ -142,7 +168,7 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
         target: id as string,
         actorRef: "User",
         actor: _id,
-        data: body
+        data: body,
       });
     }
     const document = await this.service.updateById(id as string, body);
@@ -164,7 +190,7 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
         targetRef: this.service.modelName,
         actorRef: "User",
         actor: _id,
-        data: body
+        data: body,
       });
     }
     const document = await this.service.updateMany(filter, body);
@@ -181,7 +207,7 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
     const { body } = req;
     const document = await this.service.createOne(body);
 
-        if (req.user) {
+    if (req.user) {
       const { _id } = req.user as { _id: string };
       logActivity({
         action: logActions.CREATE,
@@ -189,7 +215,7 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
         target: document._id as string,
         actorRef: "User",
         actor: _id,
-        data: body
+        data: body,
       });
     }
 
@@ -209,7 +235,7 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
         targetRef: this.service.modelName,
         actorRef: "User",
         actor: _id,
-        data: body
+        data: body,
       });
     }
     const document = await this.service.createMany(body);
@@ -218,4 +244,4 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
   });
 }
 
-export  {GenericController};
+export { GenericController };

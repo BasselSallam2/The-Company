@@ -5,6 +5,7 @@ import path from "path";
 import fs from "fs"; 
 import { fileURLToPath } from "url";
 import { Permessions } from "./interfaces.js";
+import  apiResponse  from "./apiResponse.js";
 
 const root = process.cwd();
 
@@ -69,9 +70,9 @@ const clearLOGS = (req: Request, res: Response) => {
   const {permessions} = req.user as {permessions: string[]};
   if (permessions.includes(Permessions.LOGCLEAR)) {
     fs.writeFileSync(logFile, "");
-    return res.status(200).json({ success: true, status: "success", message: "Logs cleared successfully" });
+    return apiResponse.success(res, req.t, 200, "Logs_cleared");
   }
-  return res.status(403).json({ success: false, status: "fail",message: "You don't have permission to clear logs" });
+return apiResponse.fail(res, req.t, 403, "LOGS_FAIL");
 };
 
 export  {logger , clearLOGS};
