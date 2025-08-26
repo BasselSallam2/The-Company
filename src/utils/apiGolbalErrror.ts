@@ -15,7 +15,13 @@ export const globalErrorHandler = (
   if (err.code === 11000) {
     const field = Object.keys(err.keyValue)[0] as string;
     const value = err.keyValue[field];
-    return new ApiError(409, "errors.VALIDATION", t, { field, value });
+    return res.status(409).json({
+      status: t("errors.DUBLICATED_DOCUMENT"),
+      action: null,
+      success: false,
+      statusCode: 409,
+      message: t("errors.DUBLICATED__MESSAGE" , { field, value }),
+    });
   }
 
   if (err instanceof ApiError) {

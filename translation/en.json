@@ -5,6 +5,8 @@
   "no_matched_documents": "No matched documents",
   "Created_Successfully": "Created Successfully" ,
   "errors": {
+    "DUBLICATED_DOCUMENT": "Duplicated document",
+    "DUBLICATED__MESSAGE": "{{field}} {{value}} is already taken",
     "document_not_found": "Document is not found",
     "Multer": "wrong field {{field}} please use image for single image or images for multiple images",
     "VALIDATION": "Validation Error {{field}}: {{value}}",

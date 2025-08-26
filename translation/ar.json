@@ -5,6 +5,8 @@
   "no_matched_documents": "لا توجد مستندات مطابقة",
   "Created_Successfully": "تم الإنشاء بنجاح",
   "errors": {
+    "DUBLICATED_DOCUMENT": "المستند مكرر",
+    "DUBLICATED__MESSAGE":"{{field}} {{value}} تم استعمالها مسبقا",
     "document_not_found": "المستند غير موجود",
     "VALIDATION": "خطاء في التحقق {{field}}: {{value}}",
     "Multer": "حقل غير صحيح {{field}} يرجى استخدام صورة لواحدة او صور للمزيد من الصور",
