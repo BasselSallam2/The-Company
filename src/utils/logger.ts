@@ -6,11 +6,10 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import { Permessions } from "./interfaces.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const root = process.cwd();
 
 
-const logsDir = path.join("/tmp", "LOGS");
+const logsDir = path.join(root , "src", "LOGS");
 if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
 
 const logFile = path.join(logsDir, "errors.log");

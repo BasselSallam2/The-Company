@@ -3,6 +3,7 @@ import userRouter from "@modules/User/user.route.js";
 import employeeRouter from "@modules/Employee/employee.route.js";
 import RequestRouter from "@modules/Request/request.route.js";
 import { clearCache } from "@cache/clearCache.js";
+import { clearLOGS } from "./logger.js";
 import { protect, allowedWith } from "@/middlewares/protect.js";
 import { Permessions } from "@/utils/interfaces.js";
 import authRouter from "@modules/auth/auth.route.js";
@@ -23,7 +24,7 @@ router.get(
   "/clearLogs",
   protect,
   allowedWith(Permessions.LOGCLEAR),
-  clearCache
+  clearLOGS
 );
 
 export default router;
