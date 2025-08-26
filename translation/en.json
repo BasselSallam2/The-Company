@@ -5,6 +5,9 @@
   "no_matched_documents": "No matched documents",
   "Created_Successfully": "Created Successfully" ,
   "errors": {
+    "document_not_found": "Document is not found",
+    "Multer": "wrong field {{field}} please use image for single image or images for multiple images",
+    "VALIDATION": "Validation Error {{field}}: {{value}}",
     "userNotFound": "User not found",
     "invalidData": "Invalid data",
     "serverError": "Server error",
@@ -16,7 +19,13 @@
     "ID_NOT_FOUND": "{{modelName}} with id {{id}} not found",
     "forbidden": "This User Is Not Authenticated To Perform This Action",
     "login": {
-      "UNAUTHORIZED": "you are unauthorized please login first"
+      "UNAUTHORIZED": "Token is Required",
+      "INVALID_SIGNTURE": "Invalid Signature",
+      "USER_NOT_FOUND": "User not found",
+      "USER_NOT_ACTIVE": "User is not active",
+      "USER_DELETED": "User is deleted",
+      "TOKEN_EXPIRED": "Token is expired",
+      "INVALID_CREDENTIALS": "Invalid credentials"
     }
   }
 }

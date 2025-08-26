@@ -8,7 +8,7 @@ const app = express();
 Appuse(app);
 
 app.all("*", (req, res, next) => {
-    next(new ApiError(404, 'errors.notFound', req.t, { url: req.originalUrl }));
+    next(new ApiError(404  , "errors.notFound" , req.t, { url: req.originalUrl}));
 });
 
 app.use(globalErrorHandler);

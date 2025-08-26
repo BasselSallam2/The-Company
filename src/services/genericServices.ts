@@ -3,6 +3,7 @@ import ApiFeature from "@/utils/apiFeatures.js";
 import {cache} from "@cache/init.js";
 import { clearByPattern } from "@/cache/cacheHelper.js";
 import { Document } from "mongoose";
+import e from "express";
 
  class GenericServices<T> {
   model: Model<T>;
@@ -61,9 +62,10 @@ public async getOne(
     populateOption?: any;
     sanitizeOption?: string[];
     selectOption?: string[];
+    cache?: boolean;
   }
 ) {
-  const { populateOption, sanitizeOption, selectOption } = options || {};
+  const { populateOption, sanitizeOption, selectOption , cache } = options || {};
 
   const chacheKey = `${this.model.modelName}:${id}:${JSON.stringify(populateOption)}`;
 
@@ -82,6 +84,10 @@ public async getOne(
     query = query.select(sanatizeStr);
   }
 
+    if(cache === false){
+      return query.lean().exec();
+    }
+
   return query.cache("10 minutes", chacheKey).lean().exec();
 }
 
@@ -91,7 +97,13 @@ public async getOne(
     sanitizeOption?: string[],
     args?: any
   ) {
-    const documentsCount = await this.model.countDocuments().cache();
+    let documentsCount = 0;
+    if(reqQuery.cache && reqQuery.cache === "true") {
+      documentsCount = await this.model.countDocuments().cache();
+    }else{
+      documentsCount = await this.model.countDocuments();
+    }
+
     let query = this.model.find();
     if (populateOption) {
       query = query.populate(populateOption);
@@ -102,8 +114,12 @@ public async getOne(
       .sanitize(sanitizeOption)
       .select()
       .paginate(documentsCount);
-
-    let documents = await MongooseQuery.lean().cache().exec();
+    let documents = [];
+      if(reqQuery.cache && reqQuery.cache === "true"){
+        documents = await MongooseQuery.lean().cache().exec() as any[] ; 
+      }else{
+        documents = await MongooseQuery.lean().exec() as any[] ;
+      }
     return { documents, paginationResult };
   }
 }

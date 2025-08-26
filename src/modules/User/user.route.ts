@@ -8,12 +8,10 @@ import {
   dateUserPermissionsValidator,
 } from "@/modules/User/user.validation.js";
 import UserController from "@modules/User/user.controller.js";
-import { login } from "./user.auth.service.js";
 import { protect, allowedWith } from "@/middlewares/protect.js";
 import { Permessions } from "@/utils/interfaces.js";
 const router = Router();
 
-router.route("/auth/login").post(loginValidator, login);
 router
   .route("/")
   .post(

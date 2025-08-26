@@ -4,10 +4,10 @@ import { GenericServices } from "@services/genericServices.js";
 import apiResponse from "@/utils/apiResponse.js";
 import { PopulateOption, PopulateOptions } from "mongoose";
 import { logActivity, logActions } from "@modules/activity/activity.service.js";
- class GenericController<T> {
-  service: GenericServices<T>;
+  class GenericController<TService extends GenericServices<any>> {
+  protected service: TService;
   public sanitizeOption?: string[];
-  constructor(service: GenericServices<T>) {
+   constructor(service: TService) {
     this.service = service;
   }
 
@@ -39,12 +39,17 @@ import { logActivity, logActions } from "@modules/activity/activity.service.js";
     if (query.populate) {
       finalPopulate = JSON.parse(query.populate as string);
     }
+    let cache = false;
+    if(query.cache) {
+      cache = JSON.parse(query.cache as string);
+    }
 
     const document = await this.service.getOne(
       id as string,
       {
         populateOption: finalPopulate,
         sanitizeOption: this.sanitizeOption,
+        cache: cache
       }
 
     );

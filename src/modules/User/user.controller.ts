@@ -5,14 +5,17 @@ import asyncHandler from "express-async-handler";
 import { Request, Response } from "express";
 import apiResponse from "@/utils/apiResponse.js";
 import { logActivity, logActions } from "@modules/activity/activity.service.js";
+import { NextFunction } from "express-serve-static-core";
+import { ApiError } from "@/utils/apiError.js";
 
 
-class UserController extends GenericController<any> {
+class UserController extends GenericController<typeof userService> {
 
   constructor() {
     super(userService); 
     this.sanitizeOption = getAllSanitize
   }
+
 
   public updateProfile = asyncHandler(async (req: Request, res: Response) => {
       const t = req.t;
@@ -84,6 +87,17 @@ class UserController extends GenericController<any> {
         return;
       }
       apiResponse.updateOne(res, t, document);
+      return;
+    });
+    
+    public getMe = asyncHandler(async (req: Request, res: Response , next: NextFunction) => {
+      const t = req.t;
+      const { _id } = req.user as { _id: string };
+      const document = await this.service.Getme(_id);
+      if (!document) {
+        next(new ApiError(401, "errors.login.UNAUTHORIZED", t));
+      }
+      apiResponse.getOne(res, document);
       return;
     });
 }

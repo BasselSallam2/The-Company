@@ -1,8 +1,7 @@
 import { CommonValidator } from "@/shared/commonValidator.js";
 import { ValidationChain } from "express-validator";
 
-
-class OvertimeVlidator extends CommonValidator {
+class RequestVlidator extends CommonValidator {
   constructor() {
     super();
   }
@@ -11,7 +10,5 @@ class OvertimeVlidator extends CommonValidator {
     let chain = field.isISO8601().toDate().withMessage("Must be a valid date");
     return chain;
   }
-
-
-  }
-export  {OvertimeVlidator};
+}
+export { RequestVlidator };

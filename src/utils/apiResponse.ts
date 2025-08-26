@@ -1,5 +1,6 @@
 import { Response } from "express";
 import { TFunction } from "i18next";
+import { ApiError } from "./apiError.js";
 
 class ApiResponse<T> {
   deleteOne(res: Response, t: TFunction, id: string) {
@@ -22,7 +23,7 @@ class ApiResponse<T> {
   }
 
   notFound(res: Response, t: TFunction) {
-    return res.status(404).json({ message: t("document_not_found") });
+    return new ApiError(404, "errors.document_not_found", t);
   }
 
   empty(res: Response) {

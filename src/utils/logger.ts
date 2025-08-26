@@ -4,6 +4,7 @@ import { Request , Response } from "express";
 import path from "path";
 import fs from "fs"; 
 import { fileURLToPath } from "url";
+import { Permessions } from "./interfaces.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -63,4 +64,15 @@ const logger = morgan((tokens, req, res) => {
   }
 });
 
-export  {logger};
+
+
+const clearLOGS = (req: Request, res: Response) => {
+  const {permessions} = req.user as {permessions: string[]};
+  if (permessions.includes(Permessions.LOGCLEAR)) {
+    fs.unlinkSync(logFile);
+    return res.status(200).json({ message: "Logs cleared successfully" });
+  }
+  return res.status(403).json({ message: "You don't have permission to clear logs" });
+};
+
+export  {logger , clearLOGS};

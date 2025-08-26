@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { ApiError } from "@utils/apiError.js";
 import mongoose from "mongoose";
 import {GenericServices} from "@services/genericServices.js";
+import { UserModel } from "@/modules/User/user.schema.js";
 
 
 
@@ -22,31 +23,39 @@ import {GenericServices} from "@services/genericServices.js";
   }
 
   if (!token) {
-    return next(new ApiError(401, "errors.login.UNAUTHORIZED", req.t));
+    return next(new ApiError(401 , "errors.login.UNAUTHORIZED", req.t , {} , "clearToken"));
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+    const { _id } = decoded as { _id: string , permessions: string[] };
+    const user = (await UserModel.findById(_id).select("active deleted")) as any;
+    if(!user) return next(new ApiError(401 , "errors.login.USER_NOT_FOUND", req.t));
+    if (user.active === false) {
+      return next(new ApiError(401 , "errors.login.USER_NOT_ACTIVE", req.t));
+    }
+    if (user.deleted === true) {
+      return next(new ApiError(401 ,"errors.login.USER_DELETED", req.t));
+    }
     req.user = decoded;
     next();
-  } catch (err) {
-    return next(new ApiError(401, "errors.login.UNAUTHORIZED", req.t));
+  } catch (err: any) {
+    if (err.name === "JsonWebTokenError") {
+    return next(new ApiError(401 , "errors.login.INVALID_SIGNTURE", req.t));
   }
-};
+  if (err.name === "TokenExpiredError") {
+    return next(new ApiError(401 , "errors.login.TOKEN_EXPIRED", req.t));
+  }
+  return next(err);
+}
+  };
+
 
  const allowedWith =  (...Allowedpermissions: string[]) => async (req: Request, res: Response, next: NextFunction) => {
-  const {_id , modelName} = req.user as {_id: string , modelName: string};
-  const model = new GenericServices(mongoose.model(modelName));
-  const result = await model.getOne(_id, { selectOption: ["permessions"] });
-  console.log(result);
-  console.log(Allowedpermissions);
- if (result && !Array.isArray(result)) {
-  const user = result as unknown as { permessions: string[] };
-  if (!user.permessions.some((p) => Allowedpermissions.includes(p))) {
-    return next(new ApiError(403, "errors.forbidden", req.t));
+  const {permessions} = req.user as {permessions: string[]};
+  if (!Allowedpermissions.every((p) => permessions.includes(p))) {
+    return next(new ApiError(403 , "errors.forbidden", req.t));
   }
-}
-  
   next();
 };
 

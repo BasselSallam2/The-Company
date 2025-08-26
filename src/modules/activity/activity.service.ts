@@ -1,5 +1,5 @@
 
-import {ActivityModel} from "./activity.model.js";
+import {ActivityModel} from "./activity.schema.js";
 
 interface LogParams { 
   action: "CREATE" | "UPDATE" | "DELETE";
