@@ -4,13 +4,13 @@ import expressAsyncHandler from "express-async-handler";
 import { Request, Response } from "express";
 import {ServiceResults} from "@modules/Employee/employee.interface.js";
 import apiResponse from "@/utils/apiResponse.js";
+import { GenericServices } from "@/services/genericServices.js";
 
+                                                                                                                                                                                                                                      
 
-
-class EmployeeController extends GenericController<typeof employeeService> {
-
-  constructor() {
-    super(employeeService); 
+export class EmployeeController<TService extends GenericServices<any>> extends GenericController<TService> {
+  constructor(service: TService) {
+    super(service);
   }
 
   public employeeAnalysis = expressAsyncHandler(async (req: Request, res: Response) => { 
@@ -32,4 +32,4 @@ class EmployeeController extends GenericController<typeof employeeService> {
   });
 }
 
-export default new EmployeeController();
+export default new EmployeeController(employeeService);

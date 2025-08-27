@@ -7,6 +7,7 @@ import {
 import { protect, allowedWith } from "@/middlewares/protect.js";
 import { Permessions } from "@/utils/interfaces.js";
 
+
 const router = Router();
 
 router
@@ -33,5 +34,7 @@ router
     allowedWith(Permessions.EMPLOYEEDELETE),
     employeeController.deleteById
   );
+
+
 
 export default router;

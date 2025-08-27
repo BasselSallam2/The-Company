@@ -5,7 +5,7 @@ import { EmployeeModel } from "@/modules/Employee/employee.schema.js";
 import { RequestModel } from "@/modules/Request/request.schema.js";
 
 
-class EmployeeService extends GenericServices<IEmployee> {
+export class EmployeeService extends GenericServices<IEmployee> {
   constructor(model: Model<IEmployee>) {
     super(model);
   }
