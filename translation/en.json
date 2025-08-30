@@ -1,4 +1,12 @@
 {
+  "ResetPasssword": {
+    "OTP_SENT": "OTP sent successfully",
+    "INVALID_RESET_CODE": "Invalid reset code",
+    "OTP_EXPIRED": "OTP expired",
+    "OTP_VERIFIED": "OTP verified successfully",
+    "USER_NOT_VERIFIED": "User not verified",
+    "PASSWORD_CHANGED": "Password changed successfully"
+  },
   "deleted_successfully": "Deleted Successfully",
   "document_not_found": "Document is not found",
   "updated_successfully": "Updated Successfully",
@@ -8,6 +16,7 @@
   "Logs_cleared": "Logs cleared successfully",
   "LOGS_FAIL": "Failed to clear logs",
   "errors": {
+    "USER_PHONENUMBER_NOTFOUND": "User with this phone number not found",
     "DUBLICATED_DOCUMENT": "Duplicated document",
     "DUBLICATED__MESSAGE": "{{field}} {{value}} is already taken",
     "document_not_found": "Document is not found",
@@ -32,5 +41,8 @@
       "TOKEN_EXPIRED": "Token is expired",
       "INVALID_CREDENTIALS": "Invalid credentials"
     }
-  }
+  },
+  "ResetPassword": {
+      "OTP_SENT": "OTP sent successfully"
+    }
 }

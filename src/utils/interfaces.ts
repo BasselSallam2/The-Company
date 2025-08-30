@@ -25,4 +25,5 @@ export const Permessions = {
   RequestDELETE: "Request:delete",
   CACHECLEAR: "cache:clear",
   LOGCLEAR: "log:clear",
+  ACTIVITYREAD: "activity:read",
 } as const;

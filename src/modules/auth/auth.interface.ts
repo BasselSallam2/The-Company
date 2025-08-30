@@ -1,0 +1,8 @@
+enum ServiceResults {
+ EMPTY = "empty",
+ "INVALID_RESET_CODE" = "INVALID_RESET_CODE",
+ "RESET_CODE_EXPIRED" = "RESET_CODE_EXPIRED",
+ "USER_NOT_VERIFIED" = "USER_NOT_VERIFIED",
+}
+
+export  {ServiceResults};

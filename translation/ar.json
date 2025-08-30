@@ -1,4 +1,12 @@
 {
+  "ResetPasssword": {
+    "OTP_SENT": "تم ارسال الكود بنجاح" ,
+    "INVALID_RESET_CODE": "الكود غير صحيح" ,
+    "OTP_EXPIRED": "انتهت صلاحية الكود",
+    "OTP_VERIFIED": "تم التحقق من الكود بنجاح",
+    "USER_NOT_VERIFIED": "المستخدم لا يحق له تغيير كلمة المرور",
+    "PASSWORD_CHANGED": "تم تغيير كلمة المرور بنجاح"
+  },
   "deleted_successfully": "تم الحذف بنجاح",
   "document_not_found": "المستند غير موجود",
   "updated_successfully": "تم التحديث بنجاح",
@@ -8,8 +16,9 @@
   "Logs_cleared": "تم حذف السجلات بنجاح",
   "LOGS_FAIL": "لا يمكن حذف السجلات",
   "errors": {
+    "USER_PHONENUMBER_NOTFOUND": "لم يتم العثور على مستخدم بهذا الهاتف ",
     "DUBLICATED_DOCUMENT": "المستند مكرر",
-    "DUBLICATED__MESSAGE":"{{field}} {{value}} تم استعمالها مسبقا",
+    "DUBLICATED__MESSAGE": "{{field}} {{value}} تم استعمالها مسبقا",
     "document_not_found": "المستند غير موجود",
     "VALIDATION": "خطاء في التحقق {{field}}: {{value}}",
     "Multer": "حقل غير صحيح {{field}} يرجى استخدام صورة لواحدة او صور للمزيد من الصور",

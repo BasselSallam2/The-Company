@@ -15,6 +15,13 @@ interface IUser extends Document {
   deleted: boolean;
 }
 
+enum ServiceResults {
+ EMPTY = "empty",
+ "INVALID_RESET_CODE" = "INVALID_RESET_CODE",
+ "RESET_CODE_EXPIRED" = "RESET_CODE_EXPIRED",
+}
 
 
-export  {IUser};
+
+
+export  {IUser , ServiceResults};

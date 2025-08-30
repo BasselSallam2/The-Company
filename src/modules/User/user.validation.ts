@@ -40,6 +40,11 @@ import {validateResult} from "@/middlewares/ValidationRequest.js";
   validateResult
 ];
 
+ const ForgetPasswrdValidator = [
+  UserVlidator.text(body("newPassword"), 6),
+  validateResult
+];
+
 const dateUserPermissionsValidator = [
   UserVlidator.permessions(body("permessions")),
   validateResult
@@ -58,5 +63,6 @@ export {
   loginValidator ,
   updateUserProfileValidator,
   updateUserPasswordValidator,
-  dateUserPermissionsValidator
+  dateUserPermissionsValidator,
+  ForgetPasswrdValidator
 };

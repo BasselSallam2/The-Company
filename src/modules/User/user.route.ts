@@ -40,14 +40,7 @@ router
     updateUserProfileValidator,
     UserController.updateProfile
   );
-router
-  .route("/password/:id")
-  .put(
-    protect,
-    allowedWith(Permessions.USERUPDATE),
-    updateUserPasswordValidator,
-    UserController.updatePassword
-  );
+
 router
   .route("/permissions/:id")
   .put(
