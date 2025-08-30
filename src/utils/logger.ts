@@ -24,7 +24,7 @@ const log = winston.createLogger({
       return `${timestamp} [${level.toUpperCase()}]: ${message}`;
     })
   ),
-  transports: [new winston.transports.File({ filename: logFile }), new winston.transports.Console()],
+  transports: [new winston.transports.File({ filename: logFile })],
 });
 
 

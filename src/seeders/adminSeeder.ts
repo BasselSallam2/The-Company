@@ -8,9 +8,9 @@ const seedAdmin = async () => {
   if (!Admin) {
     const allPermessions = Object.values(Permessions);
     const admin = await UserModel.create({
-      name: process.env.ADMIN_NAME,
-      password: process.env.ADMIN_PASSWORD,
-      phoneNumber: "1234567890",
+      name: "Admin",
+      password: "Admin1234",
+      phoneNumber: "+20-1554673489",
       jobTitle: "Admin",
       role: "Admin",
       permessions: [...allPermessions],
