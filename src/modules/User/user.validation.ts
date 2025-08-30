@@ -51,7 +51,7 @@ const dateUserPermissionsValidator = [
 ];
 
  const loginValidator = [
-  UserVlidator.Number(body("phoneNumber"), 10),
+  UserVlidator.text(body("phoneNumber"), 10),
   UserVlidator.text(body("password"), 6),
   validateResult
 ];
