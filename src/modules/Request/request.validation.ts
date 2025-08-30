@@ -3,7 +3,7 @@ import { RequestVlidator } from "@modules/Request/request.validatonRules.js";
 import { validateResult } from "@/middlewares/ValidationRequest.js";
 
 const createRequestValidator = [
-  RequestVlidator.text(body("note"), 5).optional(),
+  RequestVlidator.text(body("note"), 5),
   RequestVlidator.date(body("start")),
   RequestVlidator.date(body("end")),
   RequestVlidator.text(body("employee"), 5),
