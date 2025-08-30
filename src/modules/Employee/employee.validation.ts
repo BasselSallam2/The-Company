@@ -5,14 +5,14 @@ import {validateResult} from "@/middlewares/ValidationRequest.js";
 
  const createEmployeeValidator = [
   EmployeeVlidator.text(body("name"), 3),
-  EmployeeVlidator.Number(body("phoneNumber"), 10),
+  EmployeeVlidator.text(body("phoneNumber"), 10),
   EmployeeVlidator.text(body("jobTitle"), 2),
   validateResult
 ];
 
  const updateEmployeeValidator = [
    EmployeeVlidator.text(body("name"), 3).optional(),
-  EmployeeVlidator.Number(body("phoneNumber"), 10).optional(),
+  EmployeeVlidator.text(body("phoneNumber"), 10).optional(),
   EmployeeVlidator.text(body("jobTitle"), 2).optional(),
   validateResult
 ];
