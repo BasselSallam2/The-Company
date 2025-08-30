@@ -8,6 +8,7 @@ class CommonValidator {
     maxLength?: number
   ): ValidationChain {
     let chain = field
+    .optional({ nullable: true })
       .isString()
       .withMessage(`field must be a string`)
       .isLength({ min: minLength })
