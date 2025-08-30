@@ -36,8 +36,8 @@ function Appuse(app: Express) {
   app.use(compression());
   app.use(cors());
   app.use(helmet());
-  app.use(rateLimiter);
-  app.use(speedLimiter);
+  // app.use(rateLimiter);
+  // app.use(speedLimiter);
   app.use(logger);
   app.use(mongooseSanitize());
 
