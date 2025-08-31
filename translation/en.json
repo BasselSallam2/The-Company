@@ -7,6 +7,8 @@
     "USER_NOT_VERIFIED": "User not verified",
     "PASSWORD_CHANGED": "Password changed successfully"
   },
+  "User_Created_Successfully": "User created successfully with password 12345678",
+  "Password_updated_successfully": "Password updated successfully",
   "deleted_successfully": "Deleted Successfully",
   "document_not_found": "Document is not found",
   "updated_successfully": "Updated Successfully",
@@ -16,6 +18,8 @@
   "Logs_cleared": "Logs cleared successfully",
   "LOGS_FAIL": "Failed to clear logs",
   "errors": {
+    "INVALID_OLDPASSWORD": "Invalid old password",
+    "PASSWORDS_NOT_MATCH": "Passwords don't match",
     "USER_PHONENUMBER_NOTFOUND": "User with this phone number not found",
     "DUBLICATED_DOCUMENT": "Duplicated document",
     "DUBLICATED__MESSAGE": "{{field}} {{value}} is already taken",

@@ -33,7 +33,7 @@ class AuthController {
   public updatePassword = asyncHandler(async (req: Request, res: Response) => {
     const t = req.t;
     const { _id } = req.user as { _id: string };
-    const { password, confirmPassword } = req.body;
+    const { oldPassword, newPassword } = req.body;
 
     if (!_id || !Types.ObjectId.isValid(_id)) {
       apiResponse.notFound(res, t);
@@ -46,19 +46,23 @@ class AuthController {
       target: _id as string,
       actorRef: "User",
       actor: _id,
-      data: { password, confirmPassword },
     });
 
-    const document = await UserService.updateById(_id as string, {
-      password,
-      confirmPassword,
-    });
-    if (!document) {
+    const document = await AuthService.changePassword(
+      _id,
+      oldPassword,
+      newPassword,
+    );
+    if (document === ServiceResults.EMPTY) {
       apiResponse.notFound(res, t);
       return;
     }
-    apiResponse.updateOne(res, t, document);
-    return;
+    if(document === ServiceResults.INVALID_PASSWORD) {
+      apiResponse.fail(res, t, 400, "errors.INVALID_OLDPASSWORD");
+      return;
+    }
+    apiResponse.success(res, t, 200, "Password_updated_successfully");
+    
   });
 
   public forgetPassword = asyncHandler(async (req: Request, res: Response , next: NextFunction) => {

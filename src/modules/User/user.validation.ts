@@ -6,12 +6,12 @@ import {validateResult} from "@/middlewares/ValidationRequest.js";
  const createUserValidator = [
   UserVlidator.text(body("name"), 3),
   UserVlidator.text(body("phoneNumber"), 10),
-  UserVlidator.text(body("password"), 6),
-  UserVlidator.text(body("confirmPassword"), 6),
+  UserVlidator.text(body("password"), 6).optional(),
+  UserVlidator.text(body("confirmPassword"), 6).optional(),
   UserVlidator.text(body("jobTitle"), 2),
   UserVlidator.role(body("role")),
   UserVlidator.permessions(body("permessions")),
-  UserVlidator.confirmPassword(body("password"), "confirmPassword"),
+  UserVlidator.confirmPassword(body("password"), "confirmPassword").optional(),
   validateResult
 ];
 
@@ -34,9 +34,8 @@ import {validateResult} from "@/middlewares/ValidationRequest.js";
 ];
 
  const updateUserPasswordValidator = [
-  UserVlidator.text(body("password"), 6),
-  UserVlidator.text(body("confirmPassword"), 6),
-  UserVlidator.confirmPassword(body("password"), "confirmPassword"),
+  UserVlidator.text(body("oldPassword"), 6),
+  UserVlidator.text(body("newPassword"), 6),
   validateResult
 ];
 

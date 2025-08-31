@@ -17,25 +17,22 @@ export class UserController extends GenericController<typeof userService> {
 
   public updateProfile = asyncHandler(async (req: Request, res: Response) => {
     const t = req.t;
-    const { id } = req.params;
+    const { _id } = req.user as { _id: string };
     const { name, phoneNumber } = req.body;
 
-    if (!id || !Types.ObjectId.isValid(id)) {
-      apiResponse.notFound(res, t);
-      return;
-    }
     if (req.user) {
       const { _id } = req.user as { _id: string };
       logActivity({
         action: logActions.UPDATE,
         targetRef: this.service.modelName,
-        target: id as string,
+        target: _id as string,
         actorRef: "User",
         actor: _id,
         data: { name, phoneNumber },
       });
     }
-    const document = await this.service.updateById(id as string, {
+
+    const document = await this.service.updateById(_id as string, {
       name,
       phoneNumber,
     });
@@ -43,11 +40,14 @@ export class UserController extends GenericController<typeof userService> {
       apiResponse.notFound(res, t);
       return;
     }
-    apiResponse.updateOne(res, t, document);
+    apiResponse.updateOne(res, t, {
+      _id: document._id,
+      name: document.name,
+      phoneNumber: document.phoneNumber,
+      permessions: document.permessions,
+    });
     return;
   });
-
- 
 
   public updatePermessions = asyncHandler(
     async (req: Request, res: Response) => {
@@ -78,7 +78,12 @@ export class UserController extends GenericController<typeof userService> {
         apiResponse.notFound(res, t);
         return;
       }
-      apiResponse.updateOne(res, t, document);
+      apiResponse.updateOne(res, t, {
+        _id: document._id,
+        name: document.name,
+        phoneNumber: document.phoneNumber,
+        permessions: document.permessions,
+      });
       return;
     }
   );

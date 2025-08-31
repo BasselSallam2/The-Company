@@ -47,7 +47,8 @@ class ApiFeature {
     excludedFields.forEach((element) => delete queryObj[element]);
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    this.MongooseQuery = this.MongooseQuery.find(JSON.parse(queryStr));
+    const parsedQuery = JSON.parse(queryStr);
+    this.MongooseQuery = this.MongooseQuery.find({deleted: false, ...parsedQuery});
     return this;
   }
 
@@ -94,7 +95,12 @@ class ApiFeature {
 
   paginate(countDocuments: number) {
     const page = Math.max(parseInt(this.queryStr.page) || 1, 1);
-    const limit = Math.max(parseInt(this.queryStr.limit) || 20, 1);
+    const requestedLimit  = parseInt(this.queryStr.limit) ;
+    const limit =
+  requestedLimit === 0
+    ? countDocuments
+    : Math.max(requestedLimit || 20, 1);
+
 
     const adjustedLimit = Math.min(limit, countDocuments);
 
@@ -104,7 +110,7 @@ class ApiFeature {
     const pagination: paginateOBJ = {
       count: countDocuments,
       page,
-      limit,
+      limit: adjustedLimit,
       pages: Math.ceil(countDocuments / adjustedLimit),
       hasNextPage: endIndex < countDocuments,
       hasPrevPage: page > 1,

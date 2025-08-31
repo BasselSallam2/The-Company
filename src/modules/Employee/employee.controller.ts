@@ -26,7 +26,7 @@ export class EmployeeController<TService extends GenericServices<any>> extends G
         apiResponse.notFound(res, t);
         return;
       }
-      res.status(200).json(employeeTotalDuration);
+      apiResponse.getOne(res, employeeTotalDuration);
       return;
 
   });

@@ -21,7 +21,16 @@ router
     UserController.createOne
   )
   .get(protect, allowedWith(Permessions.USERREAD), UserController.getAll);
-
+  
+  router
+    .route("/profile")
+    .put(
+      protect,
+      allowedWith(Permessions.USERUPDATE),
+      updateUserProfileValidator,
+      UserController.updateProfile
+    );
+    
 router
   .route("/:id")
   .get(protect, allowedWith(Permessions.USERREAD), UserController.getOne)
@@ -32,14 +41,6 @@ router
     UserController.softDeleteById
   );
 
-router
-  .route("/profile/:id")
-  .put(
-    protect,
-    allowedWith(Permessions.USERUPDATE),
-    updateUserProfileValidator,
-    UserController.updateProfile
-  );
 
 router
   .route("/permissions/:id")

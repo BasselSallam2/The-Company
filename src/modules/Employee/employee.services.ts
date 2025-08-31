@@ -60,7 +60,6 @@ export class EmployeeService extends GenericServices<IEmployee> {
     }
   ]);
 
-  console.log("dodo" , result);  
 
   if (!result.length) {
     const employee = await this.model.findById(employeeId).select("name jobTitle PhoneNumber").lean().exec();

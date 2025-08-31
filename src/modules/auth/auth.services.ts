@@ -8,6 +8,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ServiceResults } from "./auth.interface.js";
 
+
 const tokenTTL = "1d";
 class AuthService extends UserService {
   constructor(model: Model<IUser>) {
@@ -100,6 +101,22 @@ class AuthService extends UserService {
     });
 
     return updateUser;
+  }
+
+  public async changePassword(_id: string, oldPassword: string, newPassword: string ) {
+    const user = await this.model.findById(_id).select("password").lean().exec();
+    if (!user) {
+      return ServiceResults.EMPTY;
+    }
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    if (!isMatch) {
+      return ServiceResults.INVALID_PASSWORD;
+    }
+    const updateUser = await this.model.findByIdAndUpdate(_id, {
+      password: newPassword,
+    });
+    return updateUser;
+    
   }
 }
 

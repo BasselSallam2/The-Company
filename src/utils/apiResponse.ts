@@ -30,7 +30,7 @@ class ApiResponse<T> {
   }
 
   getOne(res: Response, document: any) {
-    return res.status(200).json(document);
+    return res.status(200).json({success: true, status: "success", data: document});
   }
 
   notFound(res: Response, t: TFunction) {
@@ -57,7 +57,7 @@ class ApiResponse<T> {
   updateOne(res: Response, t: TFunction, document: any) {
     return res.status(200).json({success: true, status: "success",
       message: t("updated_successfully"),
-      document,
+      data:document,
     });
   }
 
@@ -82,7 +82,7 @@ class ApiResponse<T> {
     messageKey: string,
     data?: any
   ) {
-    return res.status(status).json({success: true, status: "success", message: t(messageKey), ...data });
+    return res.status(status).json({success: true, status: "success", message: t(messageKey), data });
   }
 
   fail(

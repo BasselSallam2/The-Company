@@ -69,7 +69,7 @@ public async getOne(
 
   const chacheKey = `${this.model.modelName}:${id}:${JSON.stringify(populateOption)}`;
 
-  let query = this.model.findById(id);
+ let query = this.model.findOne({ _id: id, deleted: false});
 
   if (selectOption) {
     query = query.select(selectOption);
@@ -99,9 +99,9 @@ public async getOne(
   ) {
     let documentsCount = 0;
     if(reqQuery.cache && reqQuery.cache === "true") {
-      documentsCount = await this.model.countDocuments().cache();
+      documentsCount = await this.model.countDocuments({deleted: false}).cache();
     }else{
-      documentsCount = await this.model.countDocuments();
+      documentsCount = await this.model.countDocuments({deleted: false});
     }
 
     let query = this.model.find();

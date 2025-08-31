@@ -50,7 +50,6 @@ export class SearchEmployeeService extends EmployeeService {
     let documents = [];
 
     documents = (await MongooseQuery.lean().cache().exec()) as any[];
-    console.log(documents); 
 
     return { documents, paginationResult };
   }

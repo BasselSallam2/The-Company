@@ -7,6 +7,8 @@
     "USER_NOT_VERIFIED": "المستخدم لا يحق له تغيير كلمة المرور",
     "PASSWORD_CHANGED": "تم تغيير كلمة المرور بنجاح"
   },
+  "User_Created_Successfully": "تم إنشاء الحساب بنجاح و كلمة المرور هي 12345678",
+  "Password_updated_successfully": "تم تغيير كلمة المرور بنجاح",
   "deleted_successfully": "تم الحذف بنجاح",
   "document_not_found": "المستند غير موجود",
   "updated_successfully": "تم التحديث بنجاح",
@@ -16,6 +18,8 @@
   "Logs_cleared": "تم حذف السجلات بنجاح",
   "LOGS_FAIL": "لا يمكن حذف السجلات",
   "errors": {
+    "INVALID_OLDPASSWORD": "كلمة المرور القديمة غير صحيحة",
+    "PASSWORDS_NOT_MATCH": "كلمة المرور غير متطابقة",
     "USER_PHONENUMBER_NOTFOUND": "لم يتم العثور على مستخدم بهذا الهاتف ",
     "DUBLICATED_DOCUMENT": "المستند مكرر",
     "DUBLICATED__MESSAGE": "{{field}} {{value}} تم استعمالها مسبقا",

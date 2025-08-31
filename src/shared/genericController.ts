@@ -119,7 +119,6 @@ class GenericController<TService extends GenericServices<any>> {
     const document = await this.service.softDeleteById(id as string);
 
     if (!document) {
-      console.log("efefef");
       apiResponse.notFound(res, t);
       return;
     }
@@ -219,8 +218,9 @@ class GenericController<TService extends GenericServices<any>> {
       });
     }
 
-    apiResponse.success(res, t, 201, `Created_Successfully`, {
+    apiResponse.success(res, t, 201, `User_Created_Successfully`, {
       id: document._id,
+      name: document.name,
     });
     return;
   });

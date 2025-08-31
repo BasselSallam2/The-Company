@@ -6,7 +6,7 @@ import { hashPasswordPlugin } from "@/shared/commonPlugins.js";
 const userSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, default: '12345678' },
     phoneNumber: { type: String, required: true , unique: true},
     jobTitle: { type: String, required: true },
     role: { type: String, required: true, enum: ["Admin", "Manager", "HR"] },
