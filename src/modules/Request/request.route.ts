@@ -30,7 +30,7 @@ router
   .delete(
     protect,
     allowedWith(Permessions.RequestDELETE),
-    RequestController.deleteById
+    RequestController.softDeleteById
   );
 
 export default router;

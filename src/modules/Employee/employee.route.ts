@@ -32,7 +32,7 @@ router
   .delete(
     protect,
     allowedWith(Permessions.EMPLOYEEDELETE),
-    employeeController.deleteById
+    employeeController.softDeleteById
   );
 
 
