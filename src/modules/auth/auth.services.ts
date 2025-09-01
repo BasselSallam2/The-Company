@@ -15,7 +15,7 @@ class AuthService extends UserService {
     super(model);
   }
 
-  public async login(phoneNumber: string, password: string, t: TFunction) {
+  public async signin(phoneNumber: string, password: string, t: TFunction) {
     let user = await UserModel.findOne({ phoneNumber })
       .select(
         "-__v -passwordResetCode -passwordResetExpires -passwordResetVerified -active -deleted -createdAt -updatedAt "

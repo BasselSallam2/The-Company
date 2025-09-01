@@ -218,7 +218,7 @@ class GenericController<TService extends GenericServices<any>> {
       });
     }
 
-    apiResponse.success(res, t, 201, `User_Created_Successfully`, {
+    apiResponse.success(res, t, 201, `Employee_Created_Successfully`, {
       id: document._id,
       name: document.name,
     });

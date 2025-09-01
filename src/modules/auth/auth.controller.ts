@@ -10,12 +10,12 @@ import UserService from "../User/user.services.js";
 import { ServiceResults } from "./auth.interface.js";
 
 class AuthController {
-  public login = asyncHandler(
+  public signin = asyncHandler(
     async (req: Request, res: Response, next: NextFunction) => {
       const { phoneNumber, password } = req.body;
       const t = req.t;
 
-      const { token, safeUser } = await AuthService.login(
+      const { token, safeUser } = await AuthService.signin(
         phoneNumber,
         password,
         t

@@ -7,6 +7,7 @@
     "USER_NOT_VERIFIED": "المستخدم لا يحق له تغيير كلمة المرور",
     "PASSWORD_CHANGED": "تم تغيير كلمة المرور بنجاح"
   },
+  "Employee_Created_Successfully": "تم إنشاء الموظف بنجاح",
   "User_Created_Successfully": "تم إنشاء الحساب بنجاح و كلمة المرور هي 12345678",
   "Password_updated_successfully": "تم تغيير كلمة المرور بنجاح",
   "deleted_successfully": "تم الحذف بنجاح",

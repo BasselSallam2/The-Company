@@ -10,7 +10,7 @@ import authController from "./auth.controller.js";
 import userController from "@modules/User/user.controller.js";
 const router = Router();
 
-router.route("/login").post(loginValidator, authController.login);
+router.route("/signin").post(loginValidator, authController.signin);
 router.route("/me").get(protect, userController.getMe); 
 router.route("/changePassword").put(protect, updateUserPasswordValidator , authController.updatePassword);
 router.route("/forgetPassword").post(authController.forgetPassword);
