@@ -86,7 +86,7 @@ export class UserController extends GenericController<typeof userService> {
       if (!document) {
         next(new ApiError(401, "errors.login.UNAUTHORIZED", t));
       }
-      res.status(200).json({data: document});
+      res.status(200).json({...document});
       return;
     }
   );
