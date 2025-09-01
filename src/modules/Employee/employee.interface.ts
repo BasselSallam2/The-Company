@@ -8,15 +8,7 @@ interface IEmployee extends Document {
   deleted: boolean
 }
 
-interface EmployeeAnalysis {
-  _id: string;
-  name: string;
-  phoneNumber: string;
-  jobTitle: string;
-  totalDuration: number; 
-  timeunit: string;
-  period: string; 
-}
+
 
 enum ServiceResults {
  EMPTY = "empty",
@@ -24,4 +16,4 @@ enum ServiceResults {
 
 
 
-export  {IEmployee , EmployeeAnalysis , ServiceResults};
+export  {IEmployee  , ServiceResults};

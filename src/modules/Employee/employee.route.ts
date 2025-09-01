@@ -22,7 +22,7 @@ router
 
 router
   .route("/:id")
-  .get(protect, allowedWith(Permessions.EMPLOYEEREAD), employeeController.employeeAnalysis)
+  .get(protect, allowedWith(Permessions.EMPLOYEEREAD), employeeController.getOne)
   .put(
     protect,
     allowedWith(Permessions.EMPLOYEEUPDATE),

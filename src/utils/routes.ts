@@ -9,10 +9,12 @@ import { Permessions } from "@/utils/interfaces.js";
 import authRouter from "@modules/auth/auth.route.js";
 import searchRouter from "@modules/Employee/services/search/search.employee.route.js";
 import activityRouter from "@modules/activity/actitvity.route.js";
+import EmployeeAnalysisRouter from "@modules/Employee/analyze/analyze.employee.route.js";
 
 const router = Router();
 
 router.use("/user", userRouter);
+router.use("/employee/analyze", EmployeeAnalysisRouter);
 router.use("/employee/auto-complete", searchRouter);
 router.use("/employee", employeeRouter);
 router.use("/request", RequestRouter);
