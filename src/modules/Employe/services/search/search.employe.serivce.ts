@@ -22,17 +22,20 @@ export class SearchEmployeService extends EmployeService {
   ) {
     let documentsCount = 0;
 
-    documentsCount = await this.model.countDocuments().cache();
+    documentsCount = await this.model.countDocuments({deleted: false});
 
     const filter: any = {};
     if (reqQuery.q && reqQuery.q !== "") {
       const qRaw = decodeURIComponent(String(reqQuery.q));
       const q = qRaw.trim();
       const regex = new RegExp(q, "i");
-      filter.$or = [
-        { name: regex },
-        { jobTitle: regex },
-        { phoneNumber: regex },
+      filter.$and = [
+        { $or: [
+          { name: regex },
+          { jobTitle: regex },
+          { phoneNumber: regex },
+        ] },
+        { deleted: false },
       ];
     }
 
