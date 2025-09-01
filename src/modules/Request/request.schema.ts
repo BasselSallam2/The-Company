@@ -8,7 +8,7 @@ const RequestSchema = new Schema<IRequest>(
     start: { type: Date, required: true },
     end: { type: Date, required: true },
     note: { type: String, default: null },
-    employee: { type: Schema.Types.ObjectId, ref: "Employee", required: true },
+    employe: { type: Schema.Types.ObjectId, ref: "Employe", required: true },
   },
   {
     timestamps: true,

@@ -40,12 +40,7 @@ export class UserController extends GenericController<typeof userService> {
       apiResponse.notFound(res, t);
       return;
     }
-    apiResponse.updateOne(res, t, {
-      _id: document._id,
-      name: document.name,
-      phoneNumber: document.phoneNumber,
-      permessions: document.permessions,
-    });
+    apiResponse.updateOne(res, t);
     return;
   });
 
@@ -78,12 +73,7 @@ export class UserController extends GenericController<typeof userService> {
         apiResponse.notFound(res, t);
         return;
       }
-      apiResponse.updateOne(res, t, {
-        _id: document._id,
-        name: document.name,
-        phoneNumber: document.phoneNumber,
-        permessions: document.permessions,
-      });
+      apiResponse.updateOne(res, t);
       return;
     }
   );
@@ -96,7 +86,7 @@ export class UserController extends GenericController<typeof userService> {
       if (!document) {
         next(new ApiError(401, "errors.login.UNAUTHORIZED", t));
       }
-      apiResponse.getOne(res, document);
+      res.status(200).json({data: document});
       return;
     }
   );

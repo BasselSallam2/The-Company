@@ -1,13 +1,10 @@
 import { CommonUserVlidator } from "@/shared/commonValidator.js";
 import { ValidationChain } from "express-validator";
 
-
-class EmployeeVlidator extends CommonUserVlidator {
+class EmployeVlidator extends CommonUserVlidator {
   constructor() {
     super();
   }
-
- 
 }
 
-export  {EmployeeVlidator};
+export { EmployeVlidator };

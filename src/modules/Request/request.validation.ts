@@ -6,7 +6,7 @@ const createRequestValidator = [
   RequestVlidator.text(body("note"), 5),
   RequestVlidator.date(body("start")),
   RequestVlidator.date(body("end")),
-  RequestVlidator.text(body("employee"), 5),
+  RequestVlidator.text(body("employe"), 5),
   validateResult,
 ];
 
@@ -14,7 +14,7 @@ const updateRequestValidator = [
   RequestVlidator.text(body("note"), 5).optional(),
   RequestVlidator.date(body("start")).optional(),
   RequestVlidator.date(body("end")).optional(),
-  RequestVlidator.text(body("employee"), 5).optional(),
+  RequestVlidator.text(body("employe"), 5).optional(),
   validateResult,
 ];
 

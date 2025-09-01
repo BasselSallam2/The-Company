@@ -3,14 +3,13 @@ import { TFunction } from "i18next";
 import { ApiError } from "./apiError.js";
 
 class ApiResponse<T> {
-  deleteOne(res: Response, t: TFunction, id: string) {
+  deleteOne(res: Response, t: TFunction, id?: string) {
     return res
       .status(200)
       .json({
         success: true,
         status: "success",
         message: t("deleted_successfully"),
-        id,
       });
   }
 
@@ -54,10 +53,9 @@ class ApiResponse<T> {
     });
   }
 
-  updateOne(res: Response, t: TFunction, document: any) {
+  updateOne(res: Response, t: TFunction, document?: any) {
     return res.status(200).json({success: true, status: "success",
       message: t("updated_successfully"),
-      data:document,
     });
   }
 

@@ -4,7 +4,7 @@ import { IRequest } from "@modules/Request/request.interface.js";
 import { RequestModel } from "@/modules/Request/request.schema.js";
 import { clearByPattern } from "@cache/cacheHelper.js";
 import { RequestResponces } from "@modules/Request/request.interface.js";
-import { EmployeeModel } from "@/modules/Employee/employee.schema.js";
+import { EmployeModel } from "@/modules/Employe/employe.schema.js";
 import ApiFeature from "@/utils/apiFeatures.js";
 class RequestService extends GenericServices<IRequest> {
   constructor(model: Model<IRequest>) {
@@ -12,14 +12,14 @@ class RequestService extends GenericServices<IRequest> {
   }
 
   public override async createOne(body: any, createdBy: string) {
-    let { note, start, end, employee } = body;
-    const isEmployeeExist = await EmployeeModel.findById(employee);
-    if (!isEmployeeExist) {
+    let { note, start, end, employe } = body;
+    const isEmployeExist = await EmployeModel.findById(employe);
+    if (!isEmployeExist) {
       return RequestResponces.EMPLOYEE_NOT_FOUND;
     }
     start = new Date(start).toISOString();
     end = new Date(end).toISOString();
-    let query = this.model.create({ note, start, end, employee, createdBy });
+    let query = this.model.create({ note, start, end, employe, createdBy });
     return query;
   }
 
@@ -39,12 +39,12 @@ class RequestService extends GenericServices<IRequest> {
     args?: any
   ) {
     let documentsCount = 0;
-    if(reqQuery.cache && reqQuery.cache === "true"){
+    if (reqQuery.cache && reqQuery.cache === "true") {
       documentsCount = await this.model.countDocuments().cache();
-    }else{
+    } else {
       documentsCount = await this.model.countDocuments();
     }
-     
+
     let query = this.model.find();
     if (populateOption) {
       query = query.populate(populateOption);
@@ -56,12 +56,12 @@ class RequestService extends GenericServices<IRequest> {
       .select()
       .paginate(documentsCount);
 
-    let documents = [] ;
+    let documents = [];
 
-    if(reqQuery.cache && reqQuery.cache === "true"){ 
-      documents = await MongooseQuery.lean().cache().exec() as any[] ;
-    }else{
-      documents = await MongooseQuery.lean().exec() as any[] ;
+    if (reqQuery.cache && reqQuery.cache === "true") {
+      documents = (await MongooseQuery.lean().cache().exec()) as any[];
+    } else {
+      documents = (await MongooseQuery.lean().exec()) as any[];
     }
 
     if (documents.length > 0) {

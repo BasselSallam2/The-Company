@@ -39,7 +39,7 @@ class GenericController<TService extends GenericServices<any>> {
 
     if (!id || !Types.ObjectId.isValid(id)) {
       apiResponse.notFound(res, t);
-      return
+      return;
     }
 
     let finalPopulate: PopulateOptions | PopulateOptions[] = [];
@@ -70,9 +70,8 @@ class GenericController<TService extends GenericServices<any>> {
 
     if (!id || !Types.ObjectId.isValid(id)) {
       apiResponse.notFound(res, t);
-      return
+      return;
     }
-
 
     if (req.user) {
       const { _id } = req.user as { _id: string };
@@ -102,7 +101,7 @@ class GenericController<TService extends GenericServices<any>> {
 
     if (!id || !Types.ObjectId.isValid(id)) {
       apiResponse.notFound(res, t);
-      return
+      return;
     }
 
     if (req.user && id && id.length > 0) {
@@ -122,7 +121,7 @@ class GenericController<TService extends GenericServices<any>> {
       apiResponse.notFound(res, t);
       return;
     }
-    apiResponse.deleteOne(res, t, id as string);
+    apiResponse.deleteOne(res, t);
     return;
   });
 
@@ -155,10 +154,9 @@ class GenericController<TService extends GenericServices<any>> {
 
     if (!id || !Types.ObjectId.isValid(id)) {
       apiResponse.notFound(res, t);
-      return
+      return;
     }
 
-    
     if (req.user) {
       const { _id } = req.user as { _id: string };
       logActivity({
@@ -175,7 +173,7 @@ class GenericController<TService extends GenericServices<any>> {
       apiResponse.notFound(res, t);
       return;
     }
-    apiResponse.updateOne(res, t, document);
+    apiResponse.updateOne(res, t);
     return;
   });
 
@@ -218,10 +216,7 @@ class GenericController<TService extends GenericServices<any>> {
       });
     }
 
-    apiResponse.success(res, t, 201, `Employee_Created_Successfully`, {
-      id: document._id,
-      name: document.name,
-    });
+    apiResponse.success(res, t, 201, `Employe_Created_Successfully`);
     return;
   });
 

@@ -1,7 +1,7 @@
-import { EmployeeService } from "@modules/Employee/employee.services.js";
-import { IEmployee } from "@modules/Employee/employee.interface.js";
+import { EmployeService } from "@modules/Employe/employe.services.js";
+import { IEmploye } from "@modules/Employe/employe.interface.js";
 import { Model, PopulateOptions } from "mongoose";
-import { EmployeeModel } from "@modules/Employee/employee.schema.js";
+import { EmployeModel } from "@modules/Employe/employe.schema.js";
 import { TFunction } from "i18next";
 import { ApiError } from "@/utils/apiError.js";
 import bcrypt from "bcryptjs";
@@ -9,12 +9,12 @@ import jwt from "jsonwebtoken";
 import ApiFeature from "@/utils/apiFeatures.js";
 
 const tokenTTL = "1d";
-export class SearchEmployeeService extends EmployeeService {
-  constructor(model: Model<IEmployee>) {
+export class SearchEmployeService extends EmployeService {
+  constructor(model: Model<IEmploye>) {
     super(model);
   }
 
-  public async employeesSearch(
+  public async employesSearch(
     reqQuery: any,
     populateOption?: PopulateOptions | PopulateOptions[],
     sanitizeOption?: string[],
@@ -55,4 +55,4 @@ export class SearchEmployeeService extends EmployeeService {
   }
 }
 
-export default new SearchEmployeeService(EmployeeModel);
+export default new SearchEmployeService(EmployeModel);

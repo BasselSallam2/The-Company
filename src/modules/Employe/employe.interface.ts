@@ -1,19 +1,14 @@
 import { Document } from "mongoose";
 
-
-interface IEmployee extends Document {
+interface IEmploye extends Document {
   name: string;
   phoneNumber: string;
   jobTitle: string;
-  deleted: boolean
+  deleted: boolean;
 }
-
-
 
 enum ServiceResults {
- EMPTY = "empty",
+  EMPTY = "empty",
 }
 
-
-
-export  {IEmployee  , ServiceResults};
+export { IEmploye, ServiceResults };
