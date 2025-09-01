@@ -1,5 +1,5 @@
 import { EmployeController } from "@modules/Employe/employe.controller.js";
-import employeSearchService from "@modules/Employe/services/search/search.employe.serivce.js";
+import employeSearchService from "@/modules/Employe/services/search/search.employe.serivce.js";
 import expressAsyncHandler from "express-async-handler";
 import { Request, Response } from "express";
 import { ServiceResults } from "@modules/Employe/employe.interface.js";

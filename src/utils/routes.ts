@@ -7,7 +7,7 @@ import { clearLOGS } from "./logger.js";
 import { protect, allowedWith } from "@/middlewares/protect.js";
 import { Permessions } from "@/utils/interfaces.js";
 import authRouter from "@modules/auth/auth.route.js";
-import searchRouter from "@modules/Employe/services/search/search.employee.route.js";
+import searchRouter from "@/modules/Employe/services/search/search.employe.route.js";
 import activityRouter from "@modules/activity/actitvity.route.js";
 import EmployeAnalysisRouter from "@modules/Employe/analyze/analyze.employe.route.js";
 
