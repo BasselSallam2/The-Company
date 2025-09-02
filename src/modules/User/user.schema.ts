@@ -1,21 +1,21 @@
 // src/models/User.ts
 import { Schema, model, Document } from "mongoose";
-import {IUser} from "@/modules/User/user.interface.js";
+import { IUser } from "@/modules/User/user.interface.js";
 import { hashPasswordPlugin } from "@/shared/commonPlugins.js";
 
 const userSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
-    password: { type: String, default: '12345678' },
-    phoneNumber: { type: String, required: true , unique: true},
+    password: { type: String, default: "12345678" },
+    phoneNumber: { type: String, required: true, unique: true },
     jobTitle: { type: String, required: true },
     role: { type: String, required: true, enum: ["Admin", "Manager", "HR"] },
-    permessions: { type: [String], required: true },
-    passwordResetCode: { type: String , default: null},
-    passwordResetExpires: { type: Date , default: null},
-    passwordResetVerified: { type: Boolean , default: false},
-    active: { type: Boolean , default: true},
-    deleted: { type: Boolean , default: false},
+    permissions: { type: [String], required: true },
+    passwordResetCode: { type: String, default: null },
+    passwordResetExpires: { type: Date, default: null },
+    passwordResetVerified: { type: Boolean, default: false },
+    active: { type: Boolean, default: true },
+    deleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,
@@ -24,10 +24,6 @@ const userSchema = new Schema<IUser>(
 
 userSchema.plugin(hashPasswordPlugin);
 
-
-
 const UserModel = model<IUser>("User", userSchema);
 
-
-
-export  {UserModel};
+export { UserModel };

@@ -13,7 +13,7 @@ const seedAdmin = async () => {
       phoneNumber: "+20-1554673489",
       jobTitle: "Admin",
       role: "Admin",
-      permessions: [...allPermessions],
+      permissions: [...allPermessions],
     });
   }
 };

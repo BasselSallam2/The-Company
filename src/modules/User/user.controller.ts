@@ -48,7 +48,7 @@ export class UserController extends GenericController<typeof userService> {
     async (req: Request, res: Response) => {
       const t = req.t;
       const { id } = req.params;
-      const { permessions } = req.body;
+      const { permissions } = req.body;
 
       if (!id || !Types.ObjectId.isValid(id)) {
         apiResponse.notFound(res, t);
@@ -63,11 +63,11 @@ export class UserController extends GenericController<typeof userService> {
           target: id as string,
           actorRef: "User",
           actor: _id,
-          data: { permessions },
+          data: { permissions },
         });
       }
       const document = await this.service.updateById(id as string, {
-        permessions,
+        permissions,
       });
       if (!document) {
         apiResponse.notFound(res, t);
@@ -86,7 +86,7 @@ export class UserController extends GenericController<typeof userService> {
       if (!document) {
         next(new ApiError(401, "errors.login.UNAUTHORIZED", t));
       }
-      res.status(200).json({...document});
+      res.status(200).json({ ...document });
       return;
     }
   );

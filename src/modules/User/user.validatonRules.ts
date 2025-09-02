@@ -2,21 +2,19 @@ import { CommonUserVlidator } from "@/shared/commonValidator.js";
 import { ValidationChain } from "express-validator";
 import { Permessions } from "@/utils/interfaces.js";
 
-
-
 class UserVlidator extends CommonUserVlidator {
   constructor() {
     super();
   }
 
-  static permessions(field: any): ValidationChain {
+  static permissions(field: any): ValidationChain {
     let chain = field
       .notEmpty()
-      .withMessage("permessions is required")
+      .withMessage("permissions is required")
       .isArray()
-      .withMessage("permessions must be an array")
-       .custom((arr: string[]) => {
-         const validValues = Object.values(Permessions) as string[];
+      .withMessage("permissions must be an array")
+      .custom((arr: string[]) => {
+        const validValues = Object.values(Permessions) as string[];
         for (const val of arr) {
           if (!validValues.includes(val)) {
             throw new Error(
@@ -27,8 +25,6 @@ class UserVlidator extends CommonUserVlidator {
 
         return true;
       });
-
- 
 
     return chain;
   }
@@ -41,7 +37,6 @@ class UserVlidator extends CommonUserVlidator {
       .withMessage("role must be Admin, Manager or HR");
     return chain;
   }
-
 }
 
-export  {UserVlidator};
+export { UserVlidator };

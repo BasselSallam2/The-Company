@@ -8,7 +8,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ServiceResults } from "./auth.interface.js";
 
-
 const tokenTTL = "1d";
 class AuthService extends UserService {
   constructor(model: Model<IUser>) {
@@ -41,7 +40,7 @@ class AuthService extends UserService {
 
     const { password: Paswword, ...safeUser } = user;
     const token = jwt.sign(
-      { _id: user._id, permessions: user.permessions },
+      { _id: user._id, permissions: user.permissions },
       process.env.JWT_SECRET as string,
       { expiresIn: tokenTTL }
     );
@@ -103,8 +102,16 @@ class AuthService extends UserService {
     return updateUser;
   }
 
-  public async changePassword(_id: string, oldPassword: string, newPassword: string ) {
-    const user = await this.model.findById(_id).select("password").lean().exec();
+  public async changePassword(
+    _id: string,
+    oldPassword: string,
+    newPassword: string
+  ) {
+    const user = await this.model
+      .findById(_id)
+      .select("password")
+      .lean()
+      .exec();
     if (!user) {
       return ServiceResults.EMPTY;
     }
@@ -116,7 +123,6 @@ class AuthService extends UserService {
       password: newPassword,
     });
     return updateUser;
-    
   }
 }
 
