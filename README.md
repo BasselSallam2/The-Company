@@ -1,3 +1,5 @@
+bobo bobo dodo
+
 # shopify2
 
 To install dependencies:
